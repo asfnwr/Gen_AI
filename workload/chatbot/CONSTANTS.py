@@ -1,0 +1,1 @@
+ENV_PATH = "D:\gitRepos\Gen_AI\.env"
