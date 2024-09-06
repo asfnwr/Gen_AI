@@ -11,14 +11,14 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_community.llms import Ollama
 import streamlit
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
 # Local imports
 import CONSTANTS
 
 def init():
     try:
-        load_dotenv(CONSTANTS.ENV_PATH)
+        #load_dotenv(CONSTANTS.ENV_PATH)
 
         os.environ["LANGCHAIN_TRACING_V2"] = "true"
         #os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
