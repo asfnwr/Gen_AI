@@ -21,7 +21,8 @@ def init():
         load_dotenv(CONSTANTS.ENV_PATH)
 
         os.environ["LANGCHAIN_TRACING_V2"] = "true"
-        os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+        #os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+        os.environ["LANGCHAIN_API_KEY"] = streamlit.secrets["LANGCHAIN_API_KEY"]
     except Exception as err:
         raise Exception("Failed to load environment variables")
 
