@@ -11,19 +11,19 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_community.llms import Ollama
 import streamlit
 import os
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 
 # Local imports
 import CONSTANTS
 
 def init():
     try:
-        #load_dotenv(CONSTANTS.ENV_PATH)
+        load_dotenv(CONSTANTS.ENV_PATH)
 
         os.environ["LANGCHAIN_TRACING_V2"] = "true"
-        #os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
-        os.environ["LANGCHAIN_API_KEY"] = streamlit.secrets["LANGCHAIN_API_KEY"]
-    except Exception as err:
+        os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+        #os.environ["LANGCHAIN_API_KEY"] = streamlit.secrets["LANGCHAIN_API_KEY"]
+    except Exception:
         raise Exception("Failed to load environment variables")
 
 
@@ -36,7 +36,7 @@ def chatbot_free():
                 ("user","Question:{question}")
             ]
         )
-    except Exception as err:
+    except Exception:
         raise Exception("Failed to initiate prompt field")
 
     try:
@@ -48,9 +48,7 @@ def chatbot_free():
 
     try:
         # Ollama interface to run LLMs
-        #llm=Ollama(model="llama3.1")
-        llm = Ollama(model="llama3.1", base_url="http://ollama-container:11434", verbose=True)
-        #llm = Ollama(model="llama3.1", base_url='http://localhost:11434')
+        llm=Ollama(model="llama3.1")
         output_parser=StrOutputParser()
     except Exception:
         raise Exception("Failed to initiate LLM")
