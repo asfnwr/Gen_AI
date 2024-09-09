@@ -50,6 +50,7 @@ def chatbot_free():
         # Ollama interface to run LLMs
         #llm=Ollama(model="llama3.1")
         llm = Ollama(model="llama3.1", base_url='http://host.docker.internal:11434')
+        llm = Ollama(model="llama3.1", base_url='http://localhost:11434')
         output_parser=StrOutputParser()
     except Exception as err:
         raise Exception("Failed to initiate LLM")
