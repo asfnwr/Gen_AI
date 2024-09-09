@@ -43,16 +43,16 @@ def chatbot_free():
         # streamlit framework
         streamlit.title('AI_Chatbot!')
         input_text = streamlit.text_input("Type in your question here.")
-    except Exception as err:
+    except Exception:
         raise Exception("Failed to initiate streamlit")
 
     try:
         # Ollama interface to run LLMs
         #llm=Ollama(model="llama3.1")
-        llm = Ollama(model="llama3.1", base_url="http://localhost.docker.internal:11434")
+        llm = Ollama(model="llama3.1", base_url="http://ollama-container:11434", verbose=True)
         #llm = Ollama(model="llama3.1", base_url='http://localhost:11434')
         output_parser=StrOutputParser()
-    except Exception as err:
+    except Exception:
         raise Exception("Failed to initiate LLM")
 
     try:
